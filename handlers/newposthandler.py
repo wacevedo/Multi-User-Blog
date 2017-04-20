@@ -4,7 +4,7 @@ from models import post as pt
 class NewPost(Handler):
     def get(self):
       if self.user:
-        self.render("newpost.html", task = 'New')
+        self.render("newpost.html", task = 'New', username = self.user)
       else:
         self.redirect('/signup')
 
@@ -18,4 +18,4 @@ class NewPost(Handler):
         self.redirect('/blog/%s' % str(p.key().id()))
       else:
         error = 'subject and content please!'
-        self.render('newpost.html', task = 'New', subject= subject, content= content, error= error)
+        self.render('newpost.html', task = 'New', subject= subject, username = self.user, content= content, error= error)

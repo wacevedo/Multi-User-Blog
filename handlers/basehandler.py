@@ -3,6 +3,7 @@ import webapp2
 import jinja2
 from helpers import salt
 from models.user import User
+import time
 
 template_dir = os.path.join(os.path.dirname(__file__), '../templates')
 jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir),
@@ -46,3 +47,7 @@ class Handler(webapp2.RequestHandler): #here BlogHandler
       webapp2.RequestHandler.initialize(self, *a, **kw)
       uid = self.get_secure_cookie('user_id')
       self.user = uid and User.by_id(int(uid))
+
+    def redirect(self, s):
+      time.sleep(0.3)
+      super(Handler, self).redirect(s)

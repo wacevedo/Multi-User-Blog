@@ -10,4 +10,4 @@ class PostPage(Handler):
         self.error(404)
         return
 
-      self.render('permalink.html', post = post)
+      self.render('permalink.html', post = post, user = self.user, username = self.user)

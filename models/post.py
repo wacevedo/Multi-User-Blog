@@ -13,9 +13,9 @@ class Post(db.Model):
     user_id = db.IntegerProperty(required = True)
     user = db.ReferenceProperty(User, collection_name='posts')
 
-    def render(self):
+    def render(self, current_user = None):
       self._render_text = self.content.replace('\n', '<br>')
-      return basehandler.render_str('post.html', p = self)
+      return basehandler.render_str('post.html', p = self, user = current_user)
 
     @classmethod
     def get_by_id(cls, post_id):

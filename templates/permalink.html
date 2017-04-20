@@ -2,10 +2,8 @@
 
 {% block content %}
 
-    {{ post.render() | safe }}
+    {{ post.render(user) | safe }}
     <br>
-    <div>
-        Posted by: {{post.user.name}}
-    </div>
+    <br>
 
 {% endblock %}
