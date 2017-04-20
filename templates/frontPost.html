@@ -1,6 +1,16 @@
 {% extends "basepost.html" %}
 
 {% block content %}
+    <ul class="navbar">
+        {% if username %}
+            <li><a class="navbar-item" href="/blog/newpost">New Post</a></li>
+            <li><a class="navbar-item" href="/logout">Logout</a></li>
+            <li><span class="navbar-item">{{username}}</span></li>
+        {% else %}
+            <li><a class="navbar-item" href="/login">Login</a></li>
+            <li><a class="navbar-item" href="/signup">Signup</a></li>
+        {% endif %}
+    </ul>
 
     {% for p in posts %}
         {{ p.render() | safe }}
