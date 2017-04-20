@@ -5,7 +5,7 @@
     {{ post.render() | safe }}
     <br>
     <div>
-        Post by: {{name}}
+        Posted by: {{post.user.name}}
     </div>
 
 {% endblock %}

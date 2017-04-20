@@ -7,7 +7,7 @@ class EditPost(Handler):
       if self.user:
         key = db.Key.from_path('Post', int(post_id), parent=pt.blog_key())
         post = db.get(key)
-        if post.user_id == self.user.key().id_or_name():
+        if post.user.key().id_or_name() == self.user.key().id_or_name():
           self.render('newpost.html', task = 'Edit', subject= post.subject, content= post.content)
         else:
           self.redirect('/login')
@@ -28,4 +28,3 @@ class EditPost(Handler):
       else:
         error = 'subject and content please!'
         self.render('newpost.html', task = 'New', subject= subject, content= content, error= error)
-

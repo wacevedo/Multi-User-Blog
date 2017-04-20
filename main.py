@@ -10,6 +10,7 @@ from handlers.postpagehandler import PostPage
 from handlers.newposthandler import NewPost
 from handlers.editposthandler import EditPost
 from handlers.welcomepagehandler import welcomepage
+from handlers.likeposthandler import LikePost
 from models.user import User
 
 class MainPage(Handler):
@@ -28,7 +29,7 @@ app = webapp2.WSGIApplication([
     ('/logout', Logout),
     ('/blog/?', BlogFront),
     ('/blog/([0-9]+)', PostPage),
-    # ('/likepost/([0-9]+)', LikePost),
+    ('/likepost/([0-9]+)', LikePost),
     ('/editpost/([0-9]+)', EditPost),
     ('/blog/newpost', NewPost),
     ('/welcome', welcomepage)

@@ -11,6 +11,7 @@ body {
 
 a {
     text-decoration: none;
+    color: #333;
 }
 
 .login-area {
@@ -131,6 +132,7 @@ input[type=submit] {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    padding-bottom: 50px;
 }
 
 .navbar li {

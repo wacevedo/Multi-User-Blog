@@ -13,8 +13,15 @@
         {{p._render_text | safe}}
     </div>
     <br>
+    <div>
+        <span>
+            {{p.likes.count()}} like{% if p.likes.count() > 1 %}s{% endif %}
+        </span>
+    </div>
     <div class="icons">
-        <i class="fa fa-heart-o" aria-hidden="true"></i>
+        <a href="/likepost/{{p.key().id_or_name()}}">
+            <i class="fa fa-heart-o" aria-hidden="true"></i>
+        </a>
         <a href="/blog/{{p.key().id_or_name()}}">
             <i class="fa fa-comment-o" aria-hidden="true"></i>
         </a>

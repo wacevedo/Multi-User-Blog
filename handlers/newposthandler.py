@@ -13,7 +13,7 @@ class NewPost(Handler):
       content = self.request.get('content')
 
       if subject and content and self.user:
-        p = pt.Post(parent = pt.blog_key(), subject = subject, content = content, user_id = self.user.key().id_or_name())
+        p = pt.Post(parent = pt.blog_key(), subject = subject, content = content, user_id = self.user.key().id_or_name(), user = self.user)
         p.put()
         self.redirect('/blog/%s' % str(p.key().id()))
       else:
