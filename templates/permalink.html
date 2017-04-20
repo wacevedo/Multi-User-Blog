@@ -1,0 +1,11 @@
+{% extends "basepost.html" %}
+
+{% block content %}
+
+    {{ post.render() | safe }}
+    <br>
+    <div>
+        Post by: {{name}}
+    </div>
+
+{% endblock %}
