@@ -31,3 +31,9 @@ class Comments(db.Model):
         comment = Comments.get_by_id(comment_id)
         comment.message = msg
         comment.put()
+
+    @classmethod
+    def can_comment(self, commented, user):
+        userpost = commented.user.key().id_or_name()
+        userloged = user.key().id_or_name()
+        return userpost == userloged
