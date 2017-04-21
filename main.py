@@ -13,6 +13,7 @@ from handlers.welcomepagehandler import welcomepage
 from handlers.likeposthandler import LikePost
 from handlers.commenthandler import CommentHandler
 from handlers.editcommenthandler import EditCommentHandler
+from handlers.deletecommenthandler import DeleteCommentHandler
 from models.user import User
 
 class MainPage(Handler):
@@ -34,6 +35,7 @@ app = webapp2.WSGIApplication([
     ('/likepost/([0-9]+)', LikePost),
     ('/editpost/([0-9]+)', EditPost),
     ('/editcomment/([0-9]+)/([0-9]+)', EditCommentHandler),
+    ('/deletecomment/([0-9]+)/([0-9]+)', DeleteCommentHandler),
     ('/comment/([0-9]+)', CommentHandler),
     ('/blog/newpost', NewPost),
     ('/welcome', welcomepage)
