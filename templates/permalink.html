@@ -5,33 +5,6 @@
     {{ post.render(user) | safe }}
     <br>
     <br>
-    <div>
-        <form action="/comment/{{post.key().id()}}" method="post">
-          <div>
-            <span>Comments</span>
-          </div>
-          <textarea class="comment-textarea" name="message">{{comment_message}}</textarea>
-          <input type="submit" value="Submit">
-        </form>
-        <br>
-        <div>
-            {% for comment in post.comments %}
-                <div class="post-content">
-                    <span style="color: #999;">{{comment.user.name}}</span> - {{comment.message | safe}}
-                </div>
-                {% if user.key().id() == comment.user.key().id() %}
-                    <div class="icons">
-                        <a href="#EditComment">
-                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                        </a>
-                        <a href="#deleteComment">
-                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                {% endif %}
-                <br>
-            {% endfor %}
-        </div>
-    </div>
+    {% include "comment.html" %}
 
 {% endblock %}

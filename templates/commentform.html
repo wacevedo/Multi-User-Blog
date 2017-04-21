@@ -1,0 +1,7 @@
+<form action="/{{action_comment}}/{{post.key().id()}}{{action_comment_id}}" method="post">
+  <div>
+    <span>Comments • {{post.comments.count()}}</span>
+  </div>
+  <textarea class="comment-textarea" name="message">{{comment_message}}</textarea>
+  <input type="submit" value="Submit">
+</form>

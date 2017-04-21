@@ -1,0 +1,22 @@
+<div>
+    {% include "commentform.html" %}
+    <br>
+    <div>
+        {% for comment in post.comments %}
+            <div class="post-content">
+                <span style="color: #999;">{{comment.user.name}}</span> - {{comment.message | safe}}
+            </div>
+            {% if user.key().id() == comment.user.key().id() %}
+                <div class="icons">
+                    <a href="/editcomment/{{post.key().id_or_name()}}/{{comment.key().id()}}">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </a>
+                    <a href="#deleteComment">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </a>
+                </div>
+            {% endif %}
+            <br>
+        {% endfor %}
+    </div>
+</div>

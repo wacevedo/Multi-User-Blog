@@ -1,0 +1,19 @@
+{% extends "basepost.html" %}
+
+{% block content %}
+    <div class="post">
+        <div class="post-heading">
+            <div class="post-title">
+                {{post.subject}}
+            </div>
+
+            <div class="post-date">
+                {{post.created.strftime("%b %d, %Y")}}
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    {% include "commentform.html" %}
+
+{% endblock %}

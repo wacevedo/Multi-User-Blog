@@ -9,7 +9,6 @@ class LikePost(Handler):
         self.redirect('/blog/' + str(post_id))
       else:
         self.redirect('/login')
-        #you can like you own posts
 
     def can_like(self, pid):
       posttolike = Post.get_by_id(int(pid))
