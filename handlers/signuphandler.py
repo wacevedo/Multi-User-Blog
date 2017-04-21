@@ -30,6 +30,7 @@ class SignUpHandler(Handler):
         have_error = True
 
       if have_error:
+        params['username'] = self.user
         self.render('signup.html', **params)
       else:
         self.done()

@@ -11,11 +11,12 @@ from handlers.newposthandler import NewPost
 from handlers.editposthandler import EditPost
 from handlers.welcomepagehandler import welcomepage
 from handlers.likeposthandler import LikePost
+from handlers.commenthandler import CommentHandler
 from models.user import User
 
 class MainPage(Handler):
     def get(self):
-      self.redirect('/blog')
+      self.redirect('/welcome')
       # self.response.headers['Content-Type'] = 'text/plain'
       # visits =  int(self.request.cookies.get('visits', 0))
       # visits += 1
@@ -31,6 +32,7 @@ app = webapp2.WSGIApplication([
     ('/blog/([0-9]+)', PostPage),
     ('/likepost/([0-9]+)', LikePost),
     ('/editpost/([0-9]+)', EditPost),
+    ('/comment/([0-9]+)', CommentHandler),
     ('/blog/newpost', NewPost),
     ('/welcome', welcomepage)
 ], debug=True)
