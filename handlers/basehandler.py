@@ -17,7 +17,9 @@ def render_post(response, post):
   response.out.write('<b>'+ post.subject + '</b><br>')
   response.out.write(post.content)
 
-class Handler(webapp2.RequestHandler): #here BlogHandler
+class Handler(webapp2.RequestHandler):
+#  A class that represent a base RequestHandler
+
     def write(self, *a, **kw):
       self.response.out.write(*a, **kw)
 

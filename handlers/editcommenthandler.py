@@ -4,6 +4,8 @@ from models.comment import Comments
 from models import post as pt
 
 class EditCommentHandler(Handler):
+#  A class that represent a RequestHandler for edit Comments
+
     def get(self, post_id, comment_id):
         if self.user:
             key = db.Key.from_path('Post', int(post_id), parent=pt.blog_key())

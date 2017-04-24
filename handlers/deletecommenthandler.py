@@ -2,6 +2,8 @@ from basehandler import Handler
 from models.comment import Comments
 
 class DeleteCommentHandler(Handler):
+#  A class that represent a RequestHandler for delete Comments
+
     def get(self, post_id, comment_id):
         if self.user:
             commented = Comments.get_by_id(comment_id)

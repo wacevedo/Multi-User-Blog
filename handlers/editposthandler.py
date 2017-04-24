@@ -3,6 +3,8 @@ from google.appengine.ext import db
 from models import post as pt
 
 class EditPost(Handler):
+#  A class that represent a RequestHandler for edit post
+
     def get(self, post_id):
       if self.user:
         key = db.Key.from_path('Post', int(post_id), parent=pt.blog_key())

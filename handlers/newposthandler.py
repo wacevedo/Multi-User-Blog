@@ -2,6 +2,8 @@ from basehandler import Handler
 from models import post as pt
 
 class NewPost(Handler):
+#  A class that represent a RequestHandler for create new posts
+
     def get(self):
       if self.user:
         self.render("newpost.html", task = 'New', username = self.user)

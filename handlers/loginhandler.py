@@ -2,6 +2,8 @@ from basehandler import Handler
 from models.user import User
 
 class Login(Handler):
+#  A class that represent a RequestHandler for login to the site
+
     def get(self):
       self.render('login.html')
 
@@ -18,6 +20,8 @@ class Login(Handler):
         self.render('login.html', error = msg)
 
 class Logout(Handler):
+#  A class that represent a RequestHandler for login to the site
+
     def get(self):
       self.logout()
       self.redirect('/signup')

@@ -2,6 +2,8 @@ from basehandler import Handler
 from helpers import uservalidator as uv
 
 class SignUpHandler(Handler):
+#  A class that represent a RequestHandler for Signup to the site 
+
     def get(self):
       self.render('signup.html')
 
@@ -30,7 +32,9 @@ class SignUpHandler(Handler):
         have_error = True
 
       if have_error:
-        params['username'] = self.user
+        params['username'] = self.username
+        if self.email:
+           params['email'] = self.email
         self.render('signup.html', **params)
       else:
         self.done()

@@ -3,6 +3,8 @@ from models.like import Like
 from models.post import Post
 
 class LikePost(Handler):
+#  A class that represent a RequestHandler for create likes to the post
+
     def get(self, post_id):
       if self.user and self.can_like(post_id):
         Like.like_it(self.user, post_id)
