@@ -6,7 +6,7 @@ class NewPost(Handler):
       if self.user:
         self.render("newpost.html", task = 'New', username = self.user)
       else:
-        self.redirect('/signup')
+        self.redirect('/login')
 
     def post(self):
       subject = self.request.get('subject')

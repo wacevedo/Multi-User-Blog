@@ -13,7 +13,7 @@
         {{p._render_text | safe}}
     </div>
     <br>
-    <div>
+    <div class="by-line">
         <span>
             {{p.likes.count()}} like{% if p.likes.count() > 1 %}s {% endif %}
         </span>
@@ -27,7 +27,7 @@
             <a href="/editpost/{{p.key().id_or_name()}}">
                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
             </a>
-            <a href="#delete">
+            <a href="/deletepost/{{p.key().id_or_name()}}">
                 <i class="fa fa-trash-o" aria-hidden="true"></i>
             </a>
             {% else %}

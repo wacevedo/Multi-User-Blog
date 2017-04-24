@@ -10,7 +10,6 @@ class Post(db.Model):
     content = db.TextProperty(required = True)
     created = db.DateTimeProperty(auto_now_add = True)
     last_modified = db.DateTimeProperty(auto_now = True)
-    user_id = db.IntegerProperty(required = True)
     user = db.ReferenceProperty(User, collection_name='posts')
 
     def render(self, current_user = None):
@@ -23,3 +22,7 @@ class Post(db.Model):
         post = db.get(key)
         if post:
             return post
+
+    @classmethod
+    def delete_post(cls, post):
+        db.delete(post)
