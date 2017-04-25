@@ -32,8 +32,8 @@ class EditPost(Handler):
                     post.content = content
                     post.put()
                     self.redirect('/blog/%s' % str(post_id))
-            else:
-                self.redirect('/login')
+                else:
+                    self.redirect('/login')
             else:
                 error = 'subject and content please!'
                 self.render('newpost.html', task='New', username=self.user,
