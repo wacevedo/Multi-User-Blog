@@ -1,5 +1,5 @@
 ## MULTI USER BLOG PROJECT
-- Demo: http://test-engineapp.appspot.com
+- Demo: http://multi-user-blog-willson.appspot.com
 
 ## TABLE OF CONTENTS
 - [FEATURES](#features)
