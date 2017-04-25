@@ -17,5 +17,10 @@
       <div class="error">{{error}}</div>
 
       <input type="submit">
+      {% if post %}
+        <a href="/blog/{{post.key().id_or_name()}}">
+          <button>Cancel</button>
+        </a>
+      {% endif %}
     </form>
 {% endblock %}
