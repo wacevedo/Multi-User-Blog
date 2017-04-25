@@ -14,6 +14,7 @@ class LikePost(Handler):
 
     def can_like(self, pid):
       posttolike = Post.get_by_id(int(pid))
-      userpost = posttolike.user.key().id_or_name()
-      userloged = self.user.key().id_or_name()
-      return userpost != userloged
+      if posttolike:
+        userpost = posttolike.user.key().id_or_name()
+        userloged = self.user.key().id_or_name()
+        return userpost != userloged

@@ -20,8 +20,11 @@ class EditCommentHandler(Handler):
            self.redirect('/signup')
 
     def post(self, post_id, comment_id):
-        commented = Comments.get_by_id(comment_id)
-        if Comments.can_comment(commented, self.user):
-            message = self.request.get('message')
-            Comments.editcommet(comment_id, message)
-        self.redirect('/blog/%s' % post_id)
+        if self.user:
+            commented = Comments.get_by_id(comment_id)
+            if Comments.can_comment(commented, self.user):
+                message = self.request.get('message')
+                Comments.editcommet(comment_id, message)
+            self.redirect('/blog/%s' % post_id)
+        else:
+           self.redirect('/login')

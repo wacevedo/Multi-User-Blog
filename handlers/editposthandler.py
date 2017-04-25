@@ -17,16 +17,22 @@ class EditPost(Handler):
         self.redirect('/signup')
 
     def post(self, post_id):
-      subject = self.request.get('subject')
-      content = self.request.get('content')
+      if self.user:
+        subject = self.request.get('subject')
+        content = self.request.get('content')
 
-      if subject and content and self.user:
-        key = db.Key.from_path('Post', int(post_id), parent=pt.blog_key())
-        post = db.get(key)
-        post.subject = subject
-        post.content = content
-        post.put()
-        self.redirect('/blog/%s' % str(post_id))
+        if subject and content and self.user:
+          key = db.Key.from_path('Post', int(post_id), parent=pt.blog_key())
+          post = db.get(key)
+          if post.user.key().id_or_name() == self.user.key().id_or_name():
+            post.subject = subject
+            post.content = content
+            post.put()
+            self.redirect('/blog/%s' % str(post_id))
+          else:
+            self.redirect('/login')
+        else:
+          error = 'subject and content please!'
+          self.render('newpost.html', task = 'New', username = self.user, subject= subject, content= content, error= error)
       else:
-        error = 'subject and content please!'
-        self.render('newpost.html', task = 'New', username = self.user, subject= subject, content= content, error= error)
+        self.redirect('/signup')
