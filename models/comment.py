@@ -3,10 +3,11 @@ from models.user import User
 from models.post import Post
 from models import post as tools
 
+
 class Comments(db.Model):
     post = db.ReferenceProperty(Post, collection_name='comments')
     user = db.ReferenceProperty(User, collection_name='comments')
-    message = db.TextProperty(required = True)
+    message = db.TextProperty(required=True)
 
     @classmethod
     def get_by_id(cls, comment_id):
@@ -18,7 +19,7 @@ class Comments(db.Model):
     @classmethod
     def comment_it(cls, uid, pid, msg):
         posttocomment = Post.get_by_id(int(pid))
-        commentofuser = Comments(user = uid, post = posttocomment, message = msg)
+        commentofuser = Comments(user=uid, post=posttocomment, message=msg)
         commentofuser.put()
 
     @classmethod

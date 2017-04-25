@@ -5,7 +5,8 @@ import hmac
 
 secret = 'Yqueloque'
 
-def make_salt(length = 5):
+
+def make_salt(length=5):
     """Make a salt for hash any data
     Args:
         length (int): the value of usernamea
@@ -15,7 +16,8 @@ def make_salt(length = 5):
     salt = ''
     return salt.join(random.choice(string.ascii_letters) for x in xrange(length))
 
-def make_pw_hash(name, pw, salt = None):
+
+def make_pw_hash(name, pw, salt=None):
     """Make a hash with the user data
     Args:
         name (str): the value of username
@@ -29,6 +31,7 @@ def make_pw_hash(name, pw, salt = None):
     h = hashlib.sha256(name + pw + salt).hexdigest()
     return '%s,%s' % (salt, h)
 
+
 def valid_pw(name, pw, h):
     """Validate password of the user
     Args:
@@ -41,6 +44,7 @@ def valid_pw(name, pw, h):
     salt = h.split(',')[0]
     return h == make_pw_hash(name, pw, salt)
 
+
 def make_secure_val(val):
     """Make a hash with the value for more secure
     Args:
@@ -50,6 +54,7 @@ def make_secure_val(val):
     """
     salt = hmac.new(secret, val).hexdigest()
     return '%s|%s' % (val, salt)
+
 
 def check_secure_val(secure_val):
     """Check if the secure val has not been changed

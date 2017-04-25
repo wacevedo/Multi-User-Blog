@@ -17,9 +17,10 @@ from handlers.deletecommenthandler import DeleteCommentHandler
 from handlers.deleteposthandler import DeletePostHandler
 from models.user import User
 
+
 class MainPage(Handler):
     def get(self):
-      self.redirect('/welcome')
+        self.redirect('/welcome')
 
 app = webapp2.WSGIApplication([
     ('/', MainPage),
