@@ -21,25 +21,27 @@
             - Posted by: {{p.user.name}}
         </span>
     </div>
-    <div class="icons">
-        <a href="/likepost/{{p.key().id_or_name()}}">
-            {% if p.user.key().id() == user.key().id() %}
-            <a href="/editpost/{{p.key().id_or_name()}}">
-                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-            </a>
-            <a href="/deletepost/{{p.key().id_or_name()}}">
-                <i class="fa fa-trash-o" aria-hidden="true"></i>
-            </a>
-            {% else %}
-                {% if p.likes.filter('user =', user).count() == 0 %}
-                <i class="fa fa-heart-o" aria-hidden="true"></i>
+    {% if user %}
+        <div class="icons">
+            <a href="/likepost/{{p.key().id_or_name()}}">
+                {% if p.user.key().id() == user.key().id() %}
+                <a href="/editpost/{{p.key().id_or_name()}}">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                </a>
+                <a href="/deletepost/{{p.key().id_or_name()}}">
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                </a>
                 {% else %}
-                <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                    {% if p.likes.filter('user =', user).count() == 0 %}
+                    <i class="fa fa-heart-o" aria-hidden="true"></i>
+                    {% else %}
+                    <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                    {% endif %}
                 {% endif %}
-            {% endif %}
-        </a>
-        <a href="/blog/{{p.key().id_or_name()}}">
-            <i class="fa fa-comment-o" aria-hidden="true"></i>
-        </a>
-    </div>
+            </a>
+            <a href="/blog/{{p.key().id_or_name()}}">
+                <i class="fa fa-comment-o" aria-hidden="true"></i>
+            </a>
+        </div>
+    {% endif %}
 </div>

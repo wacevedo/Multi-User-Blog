@@ -6,8 +6,5 @@ class BlogFront(Handler):
     #  A class that represent a RequestHandler for the main feed of the blog
 
     def get(self):
-        if self.user:
-            posts = Post.all().order('-created')
-            self.render('frontPost.html', posts=posts, username=self.user)
-        else:
-            self.redirect('/login')
+        posts = Post.all().order('-created')
+        self.render('frontPost.html', posts=posts, username=self.user)
